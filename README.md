@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Code Improvement Assistant is a command-line interface (CLI) tool designed to enhance the quality and readability of your Python code using the Mistral Codestral LLM. This tool leverages the power of Mistral AI to automatically improve your code based on specified criteria.
+The Code Improvement Assistant is a command-line interface (CLI) tool designed to enhance a program code using the Mistral Codestral LLM. This tool leverages the power of Mistral AI to automatically improve your code based on specified criteria indicated in a well prepared prompt.
 
 ## Features
 
