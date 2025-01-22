@@ -3,6 +3,7 @@
 # requires-python = ">=3.13"
 # dependencies = [
 #     "mistralai",
+#     "ollama",
 #     "rich",
 # ]
 # ///
@@ -17,21 +18,21 @@ Environment Variables Required:
     MISTRAL_API_KEY    Your Mistral AI API key
 
 Commands:
-    -h, --help         Show this help message
-    -o, --output       Specify output file path for improved code
-    -i, --input        Specify input code file path
-    -p, --prompt       Custom prompt for code improvement (optional)
-    --version         Show program version
+    -h, --help      Show this help message
+    -o, --output    Specify output file path for improved code
+    -i, --input:    Specify input code file path (optional). Not required if you create code from scratch.
+    -p, --prompt    Custom prompt for code improvement (optional)
+    --version       Show program version
 
 Examples:
     # Basic usage
-    python program.py -i input_code.py -o improved_code.py
+    ./codewizard.py -i input_code.py -o improved_code.py
 
     # With custom prompt
-    python program.py -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
+    .codewizard.py -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
 
     # Show help
-    python program.py --help
+    codewizard.py --help
 """
 
 import os
@@ -203,17 +204,18 @@ class ArgParser():
         Display the help message and exit.
         """
         help_text = """
-        Code Improvement Assistant using Mistral AI
+        Console Based Code Generation Assistant
 
-        Environment Variables Required:
+        Environment Variables Required (if using the related service):
             MISTRAL_API_KEY    Your Mistral AI API key
 
         Commands:
-            -h, --help         Show this help message
-            -o, --output       Specify output file path for improved code
-            -i, --input        Specify input code file path
-            -p, --prompt       Custom prompt for code improvement (optional)
-            --version         Show program version
+            -h, --help     Show this help message
+            -o, --output   Specify output file path for improved code
+            -i, --input    Specify input code file path
+            -i, --input:   Specify input code file path (optional). Not required if you create code from scratch.
+            -p, --prompt   Custom prompt for code improvement (optional)
+            --version      Show program version
 
         Examples:
             # Basic usage
