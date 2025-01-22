@@ -1,8 +1,10 @@
-# Code Improvement Assistant using Mistral AI
+# Console Based Code Generation Assistant
 
 ## Overview
 
-The Code Improvement Assistant is a command-line interface (CLI) tool designed to enhance a program code using the Mistral Codestral LLM. This tool leverages the power of Mistral AI to automatically improve your code based on specified criteria indicated in a well prepared prompt.
+This project is about a LLM code generation assistant using a simple command-line interface (CLI) tool designed to create new
+program or to enhance an existing one code using a Gen AI based backend API using specified criteria indicated in a well prepared
+prompt.  Currently Ollama and Mistral are implemented.
 
 ## Features
 
@@ -14,26 +16,37 @@ The Code Improvement Assistant is a command-line interface (CLI) tool designed t
 ## Requirements
 
 - Python 3.13 or higher
-- Mistral AI API key
-- `mistralai` and `rich` Python packages
+-  Depending on the backend: API key (Mistral)
+- `ollama`, `mistralai` and `rich` Python packages
 
 ## Installation
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/code-improvement-assistant.git
-    cd code-improvement-assistant
+    git clone https://github.com/f2hex/ai-code-wizard
+    cd ai-code-wizard
     ```
 
 2. **Install dependencies**:
     ```sh
-    pip install mistralai rich
+    pip install ollama mistralai rich
     ```
+3. Install `uv` if not available already:
+    ```sh
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+    if you prefer to install it through a package manager just look the [software main site](https://docs.astral.sh/uv/) on how to
+    do that.
 
-3. **Set up the Mistral API key**:
+4. **Set up the Mistral API key** (if needed):
     ```sh
     export MISTRAL_API_KEY='your_mistral_api_key_here'
     ```
+5. For an easy way to use it just make the main program executable:
+    ```sh
+    chmod +x ./codewizard.py
+    ```
+
 
 ## Usage
 
@@ -41,28 +54,34 @@ The Code Improvement Assistant is a command-line interface (CLI) tool designed t
 
 To improve a Python code file, use the following command:
 ```sh
-python program.py -i input_code.py -o improved_code.py
+./codewizard.py -i input_code.py -o improved_code.py
+```
+
+an easy way to use is to copy the program in a directory included in the `PATH` env. var and also create an alias for it like this:
+
+```sh
+alias cw=codewizard.py
 ```
 
 ### With Custom Prompt
 
 To specify a custom prompt for code improvement:
 ```sh
-python program.py -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
+cw -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
 ```
 
 ### Show Help
 
 To display the help message:
 ```sh
-python program.py --help
+cw --help
 ```
 
 ### Show Version
 
 To display the program version:
 ```sh
-python program.py --version
+cw --version
 ```
 
 ## Examples
@@ -70,19 +89,19 @@ python program.py --version
 ### Basic Example
 
 ```sh
-python program.py -i input_code.py -o improved_code.py
+cw -i input_code.py -o improved_code.py
 ```
 
 ### Custom Prompt Example
 
 ```sh
-python program.py -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
+cw -i input_code.py -o improved_code.py -p "Add type hints and docstrings"
 ```
 
 ### Help Example
 
 ```sh
-python program.py --help
+cw --help
 ```
 
 ## Environment Variables
@@ -93,7 +112,7 @@ python program.py --help
 
 - `-h, --help`: Show this help message.
 - `-o, --output`: Specify output file path for improved code.
-- `-i, --input`: Specify input code file path.
+- `-i, --input`: Specify input code file path (optional). Not required if you create code from scratch.
 - `-p, --prompt`: Custom prompt for code improvement (optional).
 - `--version`: Show program version.
 
